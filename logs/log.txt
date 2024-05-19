@@ -1,0 +1,53 @@
+[I 2024-05-18 22:23:49,915] A new study created in memory with name: no-name-454b8b80-cf9c-4e26-bba3-5cbe594afb81
+-----biginning training-----
+Namespace(epochs=10, learning_rate=0.0009882266741652272, weight_decay=0.0010407212201211464, patience=5, seed=42, batch_size=256, output_dir='./output')
+device: cuda:0
+lr: 0.000988, wd: 0.001041
+calculating mean and std...
+num classes: 1000
+mean: tensor([0.0451]), std: tensor([0.1337])
+loading dataset...
+VisionTransformer(
+  (to_patch_embedding): Sequential(
+    (0): Rearrange('b c (h p1) (w p2) -> b (h w) (p1 p2 c)', p1=8, p2=8)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): Linear(in_features=64, out_features=768, bias=True)
+    (3): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  )
+  (dropout): Dropout(p=0.0, inplace=False)
+  (transformer): Transformer(
+    (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+    (layers): ModuleList(
+      (0-5): 6 x ModuleList(
+        (0): Attention(
+          (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (attend): Softmax(dim=-1)
+          (dropout): Dropout(p=0.0, inplace=False)
+          (to_qkv): Linear(in_features=768, out_features=1536, bias=False)
+          (to_out): Sequential(
+            (0): Linear(in_features=512, out_features=768, bias=True)
+            (1): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (1): FeedForward(
+          (net): Sequential(
+            (0): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+            (1): Linear(in_features=768, out_features=768, bias=True)
+            (2): GELU(approximate='none')
+            (3): Dropout(p=0.0, inplace=False)
+            (4): Linear(in_features=768, out_features=768, bias=True)
+            (5): Dropout(p=0.0, inplace=False)
+          )
+        )
+      )
+    )
+  )
+  (to_latent): Identity()
+  (mlp_head): Linear(in_features=768, out_features=1000, bias=True)
+)
+  0%|          | 0/10 [00:00<?, ?it/s]Epoch 1, Training loss: 3.9600, Validation loss: 2.5553, Validation Accuracy: 0.3444
+ 10%|█         | 1/10 [31:12<4:40:54, 1872.70s/it]Epoch 2, Training loss: 1.6877, Validation loss: 1.0509, Validation Accuracy: 0.6938
+ 20%|██        | 2/10 [1:02:19<4:09:15, 1869.46s/it]Epoch 3, Training loss: 0.7761, Validation loss: 0.5828, Validation Accuracy: 0.8300
+ 30%|███       | 3/10 [1:33:15<3:37:23, 1863.34s/it]Epoch 4, Training loss: 0.5058, Validation loss: 0.4351, Validation Accuracy: 0.8729
+ 40%|████      | 4/10 [2:04:10<3:05:59, 1859.98s/it]Epoch 5, Training loss: 0.3868, Validation loss: 0.3149, Validation Accuracy: 0.9107
+ 50%|█████     | 5/10 [2:35:05<2:34:50, 1858.18s/it]
