@@ -89,4 +89,22 @@ VisionTransformer(
  42%|████▏     | 42/100 [21:47:07<30:03:43, 1865.92s/it]Epoch 43, Training loss: 0.1396, Validation loss: 0.1337, Validation Accuracy: 0.9637
  43%|████▎     | 43/100 [22:18:12<29:32:17, 1865.58s/it]Epoch 44, Training loss: 0.1387, Validation loss: 0.1369, Validation Accuracy: 0.9638
  44%|████▍     | 44/100 [22:49:19<29:01:33, 1865.95s/it]Epoch 45, Training loss: 0.1376, Validation loss: 0.1641, Validation Accuracy: 0.9561
- 45%|████▌     | 45/100 [23:20:24<28:30:24, 1865.89s/it]
+ 45%|████▌     | 45/100 [23:20:24<28:30:24, 1865.89s/it]Epoch 46, Training loss: 0.1387, Validation loss: 0.1335, Validation Accuracy: 0.9640
+ 46%|████▌     | 46/100 [23:51:30<27:59:17, 1865.87s/it]Epoch 47, Training loss: 0.1386, Validation loss: 0.1482, Validation Accuracy: 0.9593
+ 47%|████▋     | 47/100 [24:22:37<27:28:21, 1866.06s/it]Epoch 48, Training loss: 0.1369, Validation loss: 0.1559, Validation Accuracy: 0.9568
+ 48%|████▊     | 48/100 [24:53:44<26:57:31, 1866.37s/it]Epoch 49, Training loss: 0.1386, Validation loss: 0.1276, Validation Accuracy: 0.9660
+ 49%|████▉     | 49/100 [25:24:49<26:26:04, 1865.96s/it]Epoch 50, Training loss: 0.1364, Validation loss: 0.1462, Validation Accuracy: 0.9601
+ 50%|█████     | 50/100 [25:55:54<25:54:45, 1865.71s/it]Epoch 51, Training loss: 0.1366, Validation loss: 0.1233, Validation Accuracy: 0.9680
+ 51%|█████     | 51/100 [26:26:59<25:23:34, 1865.60s/it]Epoch 52, Training loss: 0.1370, Validation loss: 0.1446, Validation Accuracy: 0.9609
+ 52%|█████▏    | 52/100 [26:58:06<24:52:43, 1865.90s/it]Epoch 53, Training loss: 0.1359, Validation loss: 0.1598, Validation Accuracy: 0.9562
+ 53%|█████▎    | 53/100 [27:29:11<24:21:33, 1865.81s/it]Epoch 54, Training loss: 0.1358, Validation loss: 0.1374, Validation Accuracy: 0.9633
+ 54%|█████▍    | 54/100 [28:00:16<23:50:12, 1865.49s/it]Epoch 55, Training loss: 0.1363, Validation loss: 0.1345, Validation Accuracy: 0.9636
+ 55%|█████▌    | 55/100 [28:31:21<23:19:03, 1865.40s/it]Epoch 56, Training loss: 0.1361, Validation loss: 0.1371, Validation Accuracy: 0.9630
+ 56%|█████▌    | 56/100 [29:02:27<22:47:53, 1865.31s/it]Epoch 57, Training loss: 0.1354, Validation loss: 0.1363, Validation Accuracy: 0.9632
+ 57%|█████▋    | 57/100 [29:33:33<22:17:03, 1865.65s/it]Epoch 58, Training loss: 0.1351, Validation loss: 0.1401, Validation Accuracy: 0.9620
+ 58%|█████▊    | 58/100 [30:04:38<21:45:51, 1865.52s/it]Epoch 59, Training loss: 0.1348, Validation loss: 0.1273, Validation Accuracy: 0.9671
+ 59%|█████▉    | 59/100 [30:35:44<21:14:43, 1865.46s/it]Epoch 60, Training loss: 0.1352, Validation loss: 0.1438, Validation Accuracy: 0.9605
+ 60%|██████    | 60/100 [31:06:49<20:43:42, 1865.56s/it]Epoch 61, Training loss: 0.1338, Validation loss: 0.1227, Validation Accuracy: 0.9679
+ 60%|██████    | 60/100 [31:37:55<21:05:17, 1897.93s/it]
+Early stopping due to validation loss not improving for 20 epochs
+-----completing training in 113880.80 seconds-----
