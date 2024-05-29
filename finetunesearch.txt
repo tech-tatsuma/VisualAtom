@@ -1,63 +1,0 @@
-[I 2024-05-20 23:45:07,741] A new study created in memory with name: no-name-bab0fbb7-c728-4c8e-a140-11f605bc063d
------biginning training-----
-Namespace(epochs=10, learning_rate=0.0022610640347882002, weight_decay=0.0003898673754813714, patience=5, seed=42, batch_size=128, output_dir='./finetune')
-device: cuda:0
-lr: 0.002261, wd: 0.00039
-calculating mean and std...
-mean: tensor([0.4256]), std: tensor([0.2537])
-loading dataset...
-VisionTransformer(
-  (to_patch_embedding): Sequential(
-    (0): Rearrange('b c (h p1) (w p2) -> b (h w) (p1 p2 c)', p1=8, p2=8)
-    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
-    (2): Linear(in_features=64, out_features=768, bias=True)
-    (3): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
-  )
-  (dropout): Dropout(p=0.0, inplace=False)
-  (transformer): Transformer(
-    (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
-    (layers): ModuleList(
-      (0-5): 6 x ModuleList(
-        (0): Attention(
-          (norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
-          (attend): Softmax(dim=-1)
-          (dropout): Dropout(p=0.0, inplace=False)
-          (to_qkv): Linear(in_features=768, out_features=1536, bias=False)
-          (to_out): Sequential(
-            (0): Linear(in_features=512, out_features=768, bias=True)
-            (1): Dropout(p=0.0, inplace=False)
-          )
-        )
-        (1): FeedForward(
-          (net): Sequential(
-            (0): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
-            (1): Linear(in_features=768, out_features=768, bias=True)
-            (2): GELU(approximate='none')
-            (3): Dropout(p=0.0, inplace=False)
-            (4): Linear(in_features=768, out_features=768, bias=True)
-            (5): Dropout(p=0.0, inplace=False)
-          )
-        )
-      )
-    )
-  )
-  (to_latent): Identity()
-  (mlp_head): Linear(in_features=768, out_features=100, bias=True)
-)
-  0%|          | 0/10 [00:00<?, ?it/s]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 1, Training loss: 4.5481, Validation loss: 4.3443, Validation Accuracy: 0.0180
- 10%|█         | 1/10 [01:18<11:49, 78.83s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 2, Training loss: 4.1524, Validation loss: 3.8892, Validation Accuracy: 0.0920
- 20%|██        | 2/10 [01:48<06:40, 50.05s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 3, Training loss: 3.7858, Validation loss: 3.6693, Validation Accuracy: 0.1120
- 30%|███       | 3/10 [02:18<04:46, 40.92s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 4, Training loss: 3.5522, Validation loss: 3.5022, Validation Accuracy: 0.1600
- 40%|████      | 4/10 [02:48<03:39, 36.66s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 5, Training loss: 3.3600, Validation loss: 3.3297, Validation Accuracy: 0.1920
- 50%|█████     | 5/10 [03:19<02:51, 34.33s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 6, Training loss: 3.2038, Validation loss: 3.2999, Validation Accuracy: 0.1960
- 60%|██████    | 6/10 [03:49<02:11, 32.93s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 7, Training loss: 3.0669, Validation loss: 3.0906, Validation Accuracy: 0.2120
- 70%|███████   | 7/10 [04:19<01:36, 32.04s/it]Warning: Could not read image /data/furuya/sportsimage/train/high jump/159.lnk. Skipping it.
-Epoch 8, Training loss: 2.9304, Validation loss: 3.2862, Validation Accuracy: 0.2020
- 80%|████████  | 8/10 [04:49<01:02, 31.41s/it]

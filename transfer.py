@@ -47,26 +47,12 @@ def train(opt, trial=None):
     output_dir = opt.output_dir
     print(f"lr: {learning_rate}, wd: {weight_decay}")
 
-    print('calculating mean and std...')
-    sys.stdout.flush()
-    temp_transform = transforms.Compose([transforms.Resize((128, 128)), transforms.ToTensor()])
-    temp_dataset = CustomImageDataset(directory='/data/furuya/sportsimage/train', transform=temp_transform)
-    temp_loader = DataLoader(temp_dataset, batch_size=256, shuffle=False, num_workers=4, collate_fn=custom_collate_fn)
-    # Calculate mean and standard deviation from the dataset
-    data = next(iter(temp_loader))[0]
-    mean = data.mean([0, 2, 3])
-    std = data.std([0, 2, 3])
-    print(f'mean: {mean}, std: {std}')
-
     # Define transformations including normalization
     transform = transforms.Compose([
         transforms.Resize((128, 128)),
         transforms.ToTensor(),
-        transforms.Normalize(mean=mean, std=std)
+        transforms.Normalize(mean=[0.0451], std=[0.1337])
     ])
-
-    print('loading dataset...')
-    sys.stdout.flush()
 
     # Define transformations including normalization
     train_dataset = CustomImageDataset(directory='/data/furuya/sportsimage/train', transform=transform)
@@ -80,12 +66,18 @@ def train(opt, trial=None):
     num_classes = train_dataset.get_num_classes()
 
     # Model selection based on the option provided
-    model = VisionTransformer(image_size=128, patch_size=8, num_classes=1000, dim=768, depth=6, heads=8, mlp_dim=768, dropout=0.5, emb_dropout=0.5)
+    model = VisionTransformer(image_size=128, patch_size=8, num_classes=1000, dim=768, depth=6, heads=8, mlp_dim=768)
     model.load_state_dict(torch.load('./output/VisualAtom.pth'))
     model.mlp_head = nn.Linear(768, num_classes)
 
     print(model)
     sys.stdout.flush()
+
+    # Freeze all parameters except for mlp_head
+    for param in model.parameters():
+        param.requires_grad = False
+    for param in model.mlp_head.parameters():
+        param.requires_grad = True
 
     # Parallelize model if multiple GPUs are available
     if torch.cuda.device_count() > 1:
@@ -95,7 +87,7 @@ def train(opt, trial=None):
     # Transfer model to the device
     model.to(device)
     # Initialize the optimizer
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+    optimizer = torch.optim.Adam(model.mlp_head.parameters(), lr=learning_rate, weight_decay=weight_decay)
 
     # Initialize parameters for early stopping
     val_loss_min = None
@@ -225,13 +217,13 @@ def objective(trial):
         patience=20,
         seed=42,
         batch_size=128,
-        output_dir='./finetune'
+        output_dir='./transfer'
     )
     return train(args, trial)
 
 if __name__ == '__main__':
     # setting the name of the process
-    setproctitle("finetune")
+    setproctitle("transfer")
 
     print('-----biginning training-----')
     start_time = time.time()
